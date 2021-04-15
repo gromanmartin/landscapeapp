@@ -27,14 +27,12 @@ const LargeItem = ({ item, onClick }) => {
         width: ${largeItemWidth}px;
         height: ${largeItemHeight}px;
       }
-
       .large-item img {
         width: calc(100% - ${2 * padding}px);
         height: calc(100% - ${2 * padding + textHeight}px);
         padding: 5px;
         margin: ${padding}px ${padding}px 0 ${padding}px;
       }
-
       .large-item .label {
         position: absolute;
         bottom: 0;
@@ -58,7 +56,7 @@ const SmallItem = ({ item, onClick }) => {
   const isMember = item.category === settings.global.membership;
   return <>
     <style jsx>{`
-      span {
+      img {
         cursor: pointer;
         width: ${smallItemWidth}px;
         height: ${smallItemHeight}px;
@@ -66,12 +64,9 @@ const SmallItem = ({ item, onClick }) => {
         border-radius: 2px;
         padding: 1px;
         visibility: ${item.isVisible ? 'visible' : 'hidden'};
-        font-size: 10px;
-        overflow-wrap: break-word;
-        overflow:hidden;
       }
     `}</style>
-    <span data-href={item.id} onClick={onClick} title={item.name}>{item.name}</span>
+    <img data-href={item.id} loading="lazy" src={assetPath(item.href)} onClick={onClick} alt={item.name} />
   </>
 }
 
