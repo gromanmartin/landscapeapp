@@ -417,11 +417,45 @@ const ItemDialogContent = ({ itemInfo, loading }) => {
     overflow: 'hidden'
   };
 
+const productLogoAndTags = <Fragment>
+            <div className="product-logo" style={getRelationStyle(itemInfo.relation)}>
+              <img src={assetPath(itemInfo.href)} className='product-logo-img' alt={itemInfo.name}/>
+            </div>
+            <div className="product-tags">
+              <div className="product-badges" style = {{width: Math.min(300, innerWidth - 110)}} >
+                <div style={cellStyle}>{projectTag(itemInfo)}</div>
+                <div style={cellStyle}>{parentTag(itemInfo)}</div>
+                <div style={cellStyle}>{openSourceTag(itemInfo.oss)}</div>
+                <div style={cellStyle}>{licenseTag(itemInfo)}</div>
+                <div style={cellStyle}>{badgeTag(itemInfo)}</div>
+                <div style={cellStyle}><TweetButton/></div>
+              </div>
+            </div>
+  </Fragment>;
+
   const charts = <Fragment>
     {chart(itemInfo)}
     {participation(itemInfo)}
   </Fragment>
 
+  const productLogoAndTagsAndCharts = <Fragment>
+            <div className="product-logo" style={getRelationStyle(itemInfo.relation)}>
+              <img src={assetPath(itemInfo.href)} className='product-logo-img'/>
+            </div>
+            <div className="product-tags">
+              <div className="product-badges" style = {{width: 300}} >
+                <div style={cellStyle}>{projectTag(itemInfo)}</div>
+                <div style={cellStyle}>{parentTag(itemInfo)}</div>
+                <div style={cellStyle}>{openSourceTag(itemInfo.oss)}</div>
+                <div style={cellStyle}>{licenseTag(itemInfo)}</div>
+                <div style={cellStyle}>{badgeTag(itemInfo)}</div>
+                <div style={cellStyle}><TweetButton/></div>
+                {chart(itemInfo)}
+                {participation(itemInfo)}
+              </div>
+            </div>
+  </Fragment>;
+  
   const shortenUrl = (url) => url.replace(/http(s)?:\/\/(www\.)?/, "").replace(/\/$/, "");
 
   const productInfo = <Fragment>
@@ -532,16 +566,19 @@ const ItemDialogContent = ({ itemInfo, loading }) => {
             <KeyHandler keyEventName="keydown" keyValue="ArrowUp" onKeyHandle={handleUp} />
             <KeyHandler keyEventName="keydown" keyValue="ArrowDown" onKeyHandle={handleDown} />
 
+            { !scrollAllContent && !isGoogle() && productLogoAndTagsAndCharts }
 
             <div className="product-scroll" ref={(x) => productScrollEl = x }>
               { !scrollAllContent && productInfo }
               { scrollAllContent && <div className="landscape-layout">
+                  {productLogoAndTags}
                   <div className="right-column">{productInfo}</div>
                   {charts}
                 </div>
               }
 
             </div>
+            { !scrollAllContent && isGoogle() && productLogoAndTags }
         </div>
   );
 }
