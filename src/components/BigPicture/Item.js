@@ -58,8 +58,8 @@ const SmallItem = ({ item, onClick }) => {
     <style jsx>{`
       img {
         cursor: pointer;
-        width: ${smallItemWidth}px;
-        height: ${smallItemHeight}px;
+        width: 150px;//${smallItemWidth}px;
+        height: 150px;//${smallItemHeight}px;
         border: 1px solid ${isMember ? 'white' : 'grey'};
         border-radius: 2px;
         padding: 1px;
