@@ -316,7 +316,7 @@ body.embed {
 }
 
 .oss img {background: white;}
-.nonoss img {background: #E4E4E4;}
+.nonoss img {background: white;}
 
 .mosaic {
   width: 100%; cursor: pointer; position: relative; border-radius: 2px;
