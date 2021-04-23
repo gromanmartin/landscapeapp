@@ -109,7 +109,7 @@ const Fullscreen = _ => {
             top: 15,
             right: 12,
             fontSize: 11,
-            background: '#ffffff',
+            background: '#eee',
             color: 'rgb(100,100,100)',
             paddingLeft: 20,
             paddingRight: 20,
