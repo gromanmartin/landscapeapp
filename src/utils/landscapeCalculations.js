@@ -6,7 +6,7 @@ export const smallItemWidth = 34
 export const smallItemHeight = 30
 export const largeItemWidth = 2 * smallItemWidth + itemMargin
 export const largeItemHeight = 2 * smallItemHeight + itemMargin
-export const subcategoryMargin = 6
+export const subcategoryMargin = 12
 export const subcategoryTitleHeight = 20
 export const dividerWidth = 2
 export const categoryBorder = 1
@@ -21,8 +21,8 @@ const isLargeFn = ({ relation, category, member, categoryAttrs }) => {
     const membershipInfo = settings.membership[member];
     return membershipInfo && !!membershipInfo.is_large;
   }
-  //return !!categoryAttrs.isLarge || !!relationInfo.big_picture_order;
-  return !!categoryAttrs.isLarge; 
+  return !!categoryAttrs.isLarge || !!relationInfo.big_picture_order;
+  //return !!categoryAttrs.isLarge; 
 }
 
 // Compute if items are large and/or visible.
