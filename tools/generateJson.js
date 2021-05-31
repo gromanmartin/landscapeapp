@@ -491,9 +491,9 @@ async function main () {
 
 
   // now update membership, only after we've checked crunchbase issues properly
-  //const members = await getMembers();
+  /* comment since we don't have crunchbase
+  const members = await getMembers();
   _.each(itemsWithExtraFields, function(item) {
-    /*
     const membership = (function() {
       // direct membership
       const directMembership = _.findKey(members, (v) => v && v.indexOf(getItemMembershipKey(item)) !== -1);
@@ -520,19 +520,16 @@ async function main () {
       return false;
     })();
     item.member = membership;
-    */
     const {relation, isSubsidiaryProject} = (function() {
       if (item.project) {
         return {relation: item.project, isSubsidiaryProject: false};
       }
-      /*
       if (item.member) {
         return {relation: 'member', isSubsidiaryProject: false};
       }
       if (item.crunchbase === settings.global.self) {
         return {relation: 'member', isSubsidiaryProject: true};
       }
-      */
       return {relation: false, isSubsidiaryProject: false};
     })();
     item.relation = item.relation || relation; //could be set before explicitly as a 'company'
@@ -543,7 +540,6 @@ async function main () {
     .flatMap(({ children }) => children)
     .map(({ id }) => id)
 
-  /*
   itemsWithExtraFields.forEach(item => {
     const { project, crunchbase, crunchbaseData, name } = item
     const { parents } = crunchbaseData
@@ -551,11 +547,11 @@ async function main () {
       failOnMultipleErrors(`Project ${name} has been added to ${project} category but does not belong to ${settings.global.short_name}`);
     }
   })
-  */
 
   if (hasFatalErrors()) {
     process.exit(1);
   }
+  */
 
   const extractOptions = function(name) {
     return _.chain(itemsWithExtraFields).map(function(x) {

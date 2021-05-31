@@ -16,7 +16,7 @@ import {
 
 const Divider = ({ color }) => {
   const width = dividerWidth
-  const marginTop = 20
+  const marginTop = 2 * subcategoryMargin
   const height = `calc(100% - ${2 * marginTop}px)`
 
   return <div style={{ width, marginTop, height, borderLeft: `${width}px solid ${color}` }}/>
@@ -90,7 +90,7 @@ const HorizontalCategory = ({ header, subcategories, width, height, top, left, c
               }}>
                 <div style={{
                   position: 'absolute',
-                  top: -1 * (categoryTitleHeight + 20),
+                  top: -1 * categoryTitleHeight,
                   left: 0,
                   right: 0,
                   height: categoryTitleHeight,
