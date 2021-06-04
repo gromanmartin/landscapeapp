@@ -47,7 +47,7 @@ const LargeItem = ({ item, onClick }) => {
       }
     `}</style>
 
-    <img loading="lazy" src={assetPath(item.href)} data-href={item.id} alt={item.name} />
+    <img loading="lazy" src={assetPath(item.href)} onClick={onClick} data-href={item.id} alt={item.name} />
     <div className="label">{label}</div>
   </div>;
 }
