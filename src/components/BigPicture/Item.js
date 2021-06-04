@@ -22,14 +22,10 @@ const LargeItem = ({ item, onClick }) => {
       .large-item {
         cursor: pointer;
         position: relative;
+        background: ${color};
         visibility: ${item.isVisible ? 'visible' : 'hidden'};
         width: ${largeItemWidth}px;
         height: ${largeItemHeight}px;
-        border: 1px solid;
-        border-radius: 2px;
-        padding: 1px;
-        overflow-wrap: break-word;
-        overflow:hidden;
       }
       .large-item img {
         width: calc(100% - ${2 * padding}px);
